@@ -12,15 +12,44 @@ const Wrap = styled.div`
     rgba(122, 253, 255, 1) 0%,
     rgba(155, 150, 255, 1) 100%
   );
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+  color: #fff;
 `;
-const Location = styled.div``;
-const Temp = styled.div``;
-const Desc = styled.div``;
-const Separ = styled.div``;
+const Location = styled.div`
+  font-size: 50px;
+  font-weight: 900;
+`;
+const Temp = styled.div`
+  font-size: 40px;
+`;
+const Desc = styled.div`
+  font-size: 30px;
+`;
+const Separ = styled.div`
+  width: 150px;
+  height: 2px;
+  background-color: #fff;
+  margin-bottom: -50px;
+`;
 const ConWrap = styled.div`
   display: flex;
+  height: 80px;
+  /* background-color: red; */
+  font-size: 24px;
+  text-align: center;
+  font-weight: 500;
 `;
-const Con = styled.div``;
+const Con = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  &:nth-child(2) {
+    margin: 0 18px;
+  }
+`;
 
 export const Home = () => {
   const { data, isLoading } = useQuery({
