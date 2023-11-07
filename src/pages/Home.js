@@ -1,6 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import { getWeather } from "../api";
 import styled from "styled-components";
+import { useCurrentWeather } from "../lib/useCurrentWeather";
+import { Loding } from "../components/Loding";
 
 const Wrap = styled.div`
   max-width: 400px;
@@ -52,8 +54,12 @@ const Con = styled.div`
 `;
 
 export const Home = () => {
+  const { lat, lon } = useCurrentWeather();
+  console.log(lat, lon);
+  // => 객체형태로 만들어놨기 때문
+
   const { data, isLoading } = useQuery({
-    queryKey: ["weather"],
+    queryKey: ["weather", lat, lon],
     queryFn: getWeather,
   });
   // => api 에 요청할 때 사용하는 hook
@@ -66,11 +72,11 @@ export const Home = () => {
   //   name,
   //   main: { temp, temp_max, feels_like, temp_min },
   // } = data;
-
+  // => useeffect 사용
   return (
     <>
       {isLoading ? (
-        "loading"
+        <Loding />
       ) : (
         <Wrap>
           <Location>{data?.name}</Location>
